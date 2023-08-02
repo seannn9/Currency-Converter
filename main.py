@@ -11,5 +11,8 @@ def convert():
     amount = amount/rate
     amount = amount * response.json()['rates'][to_curr]
     print(round(amount,2))
+    again = input("Convert again? y/n: ").lower()
+    if again == 'y':
+        convert()
 
 convert()
