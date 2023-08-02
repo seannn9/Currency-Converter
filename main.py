@@ -1,14 +1,15 @@
 import requests
 
-url = 'http://api.currencylayer.com/live?access_key=daa1d79c5619ce03799702b95a6beb8e'
+url = 'http://data.fixer.io/api/latest?access_key=aa29df5a1c0921db9f56b133f27476dc'
 
 def convert():
     response = requests.get(url)
-    print(response.json())
     from_curr = input("From: ")
     to_curr = input("To: ")
     amount = int(input("Amount: "))
-    rate = response.json()['quotes'][from_curr]
-    print(rate)
+    rate = response.json()['rates'][from_curr]
+    amount = amount/rate
+    amount = amount * response.json()['rates'][to_curr]
+    print(round(amount,2))
 
 convert()
