@@ -13,7 +13,7 @@ def main():
     print(round(amount,2))
     again = input("Convert again? y/n: ").lower()
     if again == 'y':
-        convert()
+        main()
 
 if __name__ == '__main__':
     main()
