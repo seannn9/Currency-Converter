@@ -2,7 +2,7 @@ import requests
 
 url = 'http://data.fixer.io/api/latest?access_key=aa29df5a1c0921db9f56b133f27476dc'
 
-def main():
+def main_func():
     response = requests.get(url)
     from_curr = input("From: ")
     to_curr = input("To: ")
@@ -16,4 +16,4 @@ def main():
         main()
 
 if __name__ == '__main__':
-    main()
+    main_func()

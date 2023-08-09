@@ -1,5 +1,5 @@
 from tkinter import *
-from main import convert
+from main import main_func
 
 window = Tk()
 window.title("Currency Convert")
