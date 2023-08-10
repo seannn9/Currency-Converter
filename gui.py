@@ -1,5 +1,5 @@
 from tkinter import *
-from main import main
+from main import main_func
 
 button_font = ("Helveticam, 40")
 
