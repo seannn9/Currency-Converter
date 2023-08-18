@@ -6,7 +6,7 @@ def main_func():
     response = requests.get(url)
     from_curr = input("From: ")
     to_curr = input("To: ")
-    amount = int(input("Amount: "))
+    amount = float(input("Amount: "))
     rate = response.json()['rates'][from_curr]
     amount = amount/rate
     amount = amount * response.json()['rates'][to_curr]
