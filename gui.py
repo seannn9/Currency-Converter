@@ -7,69 +7,36 @@ def destroy_all():
     for widget in window.winfo_children():
         widget.destroy()
 
-def create_to():
-    # create convert to options 
-    button3 = Button(window, text="USD", font=button_font, width=40,command=to_USD)
-    button3.pack(side=TOP)
-    button4 = Button(window, text="PHP", font=button_font, width=40, command=to_PHP)
-    button4.pack(side=TOP)
-    button5 = Button(window, text="EUR", font=button_font, width=40, command=to_EUR)
-    button5.pack(side=TOP)
-
-def create_submit():
-    def get_amount():
-        amount.get()
-    amount = Entry()
-    amount.pack()
-    submit = Button(window, text="Submit", font=("Helvetica, 20"), command=get_amount)
-    submit.pack()
-    money = get_amount()
-    return money
-
-
-def from_USD():
-    destroy_all()
-    create_to()
-    return "USD"
+def convert_from(f):
+    button.configure(command=lambda t="USD": convert_to(t))
+    button1.configure(command=lambda t="PHP": convert_to(t))
+    button2.configure(command=lambda t="EUR": convert_to(t))
+    return f
     
-def from_PHP():
+def convert_to(t):
     destroy_all()
-    create_to()
-    return "PHP"
+    enter_amount = Entry(window)
+    enter_amount.pack()
+    submit = Button(window, text="Convert", font=button_font, command=lambda: convert(enter_amount.get()))
+    submit.pack()
+    return t
 
-def from_EUR():
-    destroy_all()
-    create_to()
-    return "EUR"
+def convert(a):
+    print(a)
+    main_func(convert_from, convert_to, a)
 
-# currency to convert to
-def to_USD():
-    destroy_all()
-    create_submit()
-    return "USD"
-
-def to_PHP():
-    destroy_all()
-    return "PHP"
-
-def to_EUR():
-    destroy_all()
-    return "EUR"
-
-
-  
 window = Tk()
 window.title("Currency Convert")
 window.geometry("500x500")
 window.resizable(False, False)
 
-button = Button(window, text="USD", font=button_font, width=40, command=from_USD)
+button = Button(window, text="USD", font=button_font, width=40, command=lambda f="USD": convert_from(f))
 button.pack(side=TOP)
 
-button1 = Button(window, text="PHP", font=button_font, width=40, command=from_PHP)
+button1 = Button(window, text="PHP", font=button_font, width=40, command=lambda f="PHP": convert_from(f))
 button1.pack(side=TOP)
 
-button2 = Button(window, text="EUR", font=button_font, width=40, command=from_EUR)
+button2 = Button(window, text="EUR", font=button_font, width=40, command=lambda f="EUR": convert_from(f))
 button2.pack(side=TOP)
 
 window.mainloop()
