@@ -3,24 +3,47 @@ from main import main_func
 
 button_font = ("Helvetica, 40")
 
+def destroy_all():
+    for widget in window.winfo_children():
+        widget.destroy()
+
+def create_to():
+    button3 = Button(window, text="USD", font=button_font, width=40,command=to_USD)
+    button3.pack(side=TOP)
+    button4 = Button(window, text="PHP", font=button_font, width=40, command=to_PHP)
+    button4.pack(side=TOP)
+    button5 = Button(window, text="EUR", font=button_font, width=40, command=to_EUR)
+    button5.pack(side=TOP)
+
 def from_USD():
-    global button
-    window.title("Currency Convert TO")
+    destroy_all()
+    create_to()
     return "USD"
     
 def from_PHP():
-    window.title("Currency Convert TO")
+    destroy_all()
+    create_to()
     return "PHP"
 
 def from_EUR():
-    window.title("Currency Convert TO")
+    destroy_all()
+    create_to()
+    return "EUR"
+
+def to_USD():
+    destroy_all()
+    return "USD"
+
+def to_PHP():
+    destroy_all()
+    return "PHP"
+
+def to_EUR():
+    destroy_all()
     return "EUR"
     
-def convert_to(convert_from):
-    pass
-
 window = Tk()
-window.title("Currency Convert FROM")
+window.title("Currency Convert")
 window.geometry("500x500")
 window.resizable(False, False)
 
