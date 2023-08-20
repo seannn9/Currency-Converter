@@ -16,4 +16,4 @@ def main_func(f, t, a):
     #   main_func()
 
 if __name__ == '__main__':
-    main_func
+    main_func()

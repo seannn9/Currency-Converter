@@ -1,7 +1,9 @@
 from tkinter import *
-from main import main_func
+import main
 
-button_font = ("Helvetica, 40")
+button_font = ("Helvetica", 40)
+from_curr = None
+to_curr = None
 
 def destroy_all():
     for widget in window.winfo_children():
@@ -11,7 +13,8 @@ def convert_from(f):
     button.configure(command=lambda t="USD": convert_to(t))
     button1.configure(command=lambda t="PHP": convert_to(t))
     button2.configure(command=lambda t="EUR": convert_to(t))
-    return f
+    global from_curr
+    from_curr = f
     
 def convert_to(t):
     destroy_all()
@@ -19,11 +22,14 @@ def convert_to(t):
     enter_amount.pack()
     submit = Button(window, text="Convert", font=button_font, command=lambda: convert(enter_amount.get()))
     submit.pack()
-    return t
+    global to_curr
+    to_curr = t
 
 def convert(a):
     print(a)
-    main_func(convert_from, convert_to, a)
+    from_curr = convert_from(None)
+    to_curr = convert_to(None)
+    main.main_func(from_curr, to_curr, a)
 
 window = Tk()
 window.title("Currency Convert")
